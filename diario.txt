@@ -1,0 +1,14 @@
+20160913
+synaptic
+ monodevelop
+ monodevelop-databse
+ monodoc-browser
+ monodoc-gtk2.0-manual
+ monodoc-mysql-manual
+ monodevelop-versioncontrol
+
+ git
+
+en bitnami.com descargamos el LAMP (bitnami lampstack-5.5.25-0-linux-x64-installer.run o el que toque).
+
+Le ponemos el bit de ejecución y hacemos doble click para instalar.
