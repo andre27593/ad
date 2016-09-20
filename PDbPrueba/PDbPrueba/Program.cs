@@ -14,6 +14,7 @@ namespace PDbPrueba
 		{
 			//Conectar con la base de datos
 			Console.WriteLine ("Probando acceso a dbprueba");
+			Console.WriteLine ("");
 			IDbConnection dbConnection = new MySqlConnection ("Database=dbprueba;User Id=root;Password=sistemas");
 
 			//Creación de un comando para poder insertar, eliminar, modificar...
@@ -21,7 +22,7 @@ namespace PDbPrueba
 
 			//Añadir a la base de datos
 			IDbDataParameter dbDataParameter = dbcommand.CreateParameter ();
-			IDbDataParameter dbDataParameter2 = dbcommand.CreateParameter ();
+			IDbDataParameter dbDataParameter2 = dbcommand.CreateParameter (); //Creamos otro parámetro, sino coge el mismo objeto
 
 			IDataReader query;
 
@@ -30,20 +31,24 @@ namespace PDbPrueba
 		
 			//Menú con las opciones de salir, insertar, editar, eliminar, listar todos
 
+			Console.Write ("MENÚ");
+			Console.WriteLine ("");
 			Console.Write ("0.SALIR" + "\n" + "1.NUEVO" + "\n" + "2.EDITAR" + "\n" + "3.ELIMINAR" + "\n" + "4.LISTAR TODOS" + "\n");
 
 
-			Boolean opc=true;
+			Boolean opc;
 
 			do {
 
+				Console.WriteLine("");
 				Console.Write ("Seleccione una opción: ");
 
 				switch (Console.Read ()) {
+
 				case '0':
 
 					Console.WriteLine ("");
-					Console.Write ("SALIR");
+					Console.Write ("ADI0000S!! :)");
 					Console.WriteLine ("");
 					Environment.Exit (0);
 					break;
