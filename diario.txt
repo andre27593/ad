@@ -12,3 +12,11 @@ synaptic
 en bitnami.com descargamos el LAMP (bitnami lampstack-5.5.25-0-linux-x64-installer.run o el que toque).
 
 Le ponemos el bit de ejecución y hacemos doble click para instalar.
+
+Crear nuevo repositorio en el github --> ad
+git clone https://github.com/andre27593/ad.git
+
+Configurar el git desde el terminal
+git config --global user.name andre27593
+git config --global user.email dam.aolivero@institutoserpis.org
+git config --global push.default simple
