@@ -25,6 +25,7 @@ namespace PDbPrueba
 			IDbDataParameter dbDataParameter2 = dbcommand.CreateParameter (); //Creamos otro parámetro, sino coge el mismo objeto
 
 			IDataReader query;
+			int opc=0;
 
 			dbConnection.Open ();
 
@@ -36,7 +37,7 @@ namespace PDbPrueba
 			Console.Write ("0.SALIR" + "\n" + "1.NUEVO" + "\n" + "2.EDITAR" + "\n" + "3.ELIMINAR" + "\n" + "4.LISTAR TODOS" + "\n");
 
 
-			Boolean opc;
+		
 
 			do {
 
@@ -171,7 +172,7 @@ namespace PDbPrueba
 				}
 
 
-			} while(opc=true);
+			} while(opc!=0);
 
 			dbConnection.Close ();
 		}
