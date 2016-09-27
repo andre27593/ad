@@ -2,7 +2,7 @@ using System;
 using Gtk;
 using System.Data;
 using MySql.Data.MySqlClient;
-using PArticulo;
+using PArticuloGTK;
 
 public partial class MainWindow: Gtk.Window
 {	
@@ -61,13 +61,9 @@ public partial class MainWindow: Gtk.Window
 	{
 
 
-		//dbcommand2.CommandText = "insert into articulo (id, nombre, precio, categoria) values (id, @nombre, @precio, @categoria)";
+		Nuevo insertar = new Nuevo ();
 
-		Nuevo.Instance.DbConnection = new MySqlConnection ("Database=dbprueba; User Id=root; Password=sistemas");
-
-
-
-
+		insertar.Show ();
 
 	}
 
@@ -87,7 +83,11 @@ public partial class MainWindow: Gtk.Window
 	
 	protected void OnRefreshActionActivated (object sender, EventArgs e)
 	{
-		refreshAction.Sensitive = treeview1.Selection.CountSelectedRows () > 0;
+		//refreshAction.Activated = delegate {
+
+
+
+		//};
 
 	}
 
