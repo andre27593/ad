@@ -75,6 +75,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Nuevo.cs" />
     <Compile Include="gtk-gui\PArticuloGTK.Nuevo.cs" />
+    <Compile Include="Eliminar.cs" />
+    <Compile Include="gtk-gui\PArticuloGTK.Eliminar.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

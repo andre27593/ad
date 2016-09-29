@@ -67,34 +67,15 @@ public partial class MainWindow: Gtk.Window
 
 	}
 
-
-	protected void OnEditActionActivated (object sender, EventArgs e)
-	{
-		throw new NotImplementedException ();
-	}
-
-
-	protected void OnDeleteActionActivated (object sender, EventArgs e){
-
-		throw new NotImplementedException ();
-	
-	}
-
-	
-	protected void OnRefreshActionActivated (object sender, EventArgs e)
-	{
-		//refreshAction.Activated = delegate {
-
-
-
-		//};
-
-	}
-
-
 	protected void OnQuitActionActivated (object sender, EventArgs e)
 	{
 		Application.Quit ();
 	}
+	
+	protected void OnDeleteActionActivated (object sender, EventArgs e)
+	{
+		Eliminar eliminar = new Eliminar ();
 
+		eliminar.Show ();
+	}
 }
