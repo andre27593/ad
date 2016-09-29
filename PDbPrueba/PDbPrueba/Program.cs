@@ -74,6 +74,29 @@ namespace PDbPrueba
 
 					break;
 
+					//Menú con métodos y controlando las excepciones
+					//Los métodos de eliminar, modificar y listar igual que el de insertar
+					//pero con las consultas correspondientes.
+
+					//private static string INSERT_SQL = "insert into categoria ....";
+					//private static void Nuevo(){
+					// string nombre = readString("Nombre: ");
+					// IDbCommand dbCommand = dbConnection.CreateCommand();
+					// dbcommand.CommandText = INSERT_SQL;
+					// addParameter (dbCommand, "nombre", nombre);
+					// try{
+					// }catch
+
+					//private const int ER_DUP_ENTRY = 1062;
+					//private static string getUserMessage(MySqlException ex){
+					// switch (ex.Number){
+					// case ER_DUP_ENTRY:
+					//	return "Dato duplicado";
+					// }
+					//return ex.Message;
+					//}
+
+
 				case '2':
 
 					Console.WriteLine ("");
@@ -177,4 +200,7 @@ namespace PDbPrueba
 			dbConnection.Close ();
 		}
 	}
+
+
+
 }
