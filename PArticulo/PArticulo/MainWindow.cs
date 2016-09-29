@@ -78,4 +78,22 @@ public partial class MainWindow: Gtk.Window
 
 		eliminar.Show ();
 	}
+	protected void OnRefreshActionActivated (object sender, EventArgs e)
+	{
+		throw new NotImplementedException ();
+	}
+
+
+	protected void OnRefreshActionActivated (object sender, EventArgs e)
+	{
+		refreshAction.Activated += delegate {
+
+
+
+		};
+	}
+
+
+
+
 }

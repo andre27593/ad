@@ -18,35 +18,45 @@ namespace PArticuloGTK
 	
 		protected void OnButton1Clicked (object sender, EventArgs e)
 		{
-			IDbConnection dbconnection = new MySqlConnection ("Database=dbprueba; User=root; Password=sistemas");
+			try {
 
-			dbconnection.Open ();
+				IDbConnection dbconnection = new MySqlConnection ("Database=dbprueba; User=root; Password=sistemas");
 
-			IDbCommand dbcommand = dbconnection.CreateCommand ();
-			dbcommand.CommandText = "insert into articulo (id,nombre, precio, categoria) values (id,@nombre, @precio, @categoria)";
-			string nombre = entry1.Text;
-			string precio = entry2.Text;
-			string categoria = entry3.Text;
+				dbconnection.Open ();
 
-			IDbDataParameter parameter1 = dbcommand.CreateParameter ();
-			IDbDataParameter parameter2 = dbcommand.CreateParameter ();
-			IDbDataParameter parameter3 = dbcommand.CreateParameter ();
+				IDbCommand dbcommand = dbconnection.CreateCommand ();
+				dbcommand.CommandText = "insert into articulo (id,nombre, precio, categoria) values (id,@nombre, @precio, @categoria)";
+				string nombre = entry1.Text;
+				string precio = entry2.Text;
+				string categoria = entry3.Text;
 
-			parameter1.ParameterName = "nombre";
-			parameter1.Value = nombre;
-			dbcommand.Parameters.Add (parameter1);
+				IDbDataParameter parameter1 = dbcommand.CreateParameter ();
+				IDbDataParameter parameter2 = dbcommand.CreateParameter ();
+				IDbDataParameter parameter3 = dbcommand.CreateParameter ();
 
-			parameter2.ParameterName = "precio";
-			parameter2.Value = precio;
-			dbcommand.Parameters.Add (parameter2);
+				parameter1.ParameterName = "nombre";
+				parameter1.Value = nombre;
+				dbcommand.Parameters.Add (parameter1);
 
-			parameter3.ParameterName = "categoria";
-			parameter3.Value = categoria;
-			dbcommand.Parameters.Add (parameter3);
+				parameter2.ParameterName = "precio";
+				parameter2.Value = precio;
+				dbcommand.Parameters.Add (parameter2);
+
+				parameter3.ParameterName = "categoria";
+				parameter3.Value = categoria;
+				dbcommand.Parameters.Add (parameter3);
 
 
-			dbcommand.ExecuteNonQuery ();
-			dbconnection.Close ();
+				dbcommand.ExecuteNonQuery ();
+				dbconnection.Close ();	
+
+			} catch (MySqlException ex) {
+
+				Console.WriteLine ("ID no existe");
+		
+			}
+
+
 		}
 }
 }
