@@ -17,9 +17,6 @@ public partial class MainWindow: Gtk.Window
 
 		dbConnection.Open ();
 
-
-
-
 		//Para que lea y liste los datos de los campos
 		ListStore listStore = new ListStore (typeof(long), typeof(string), typeof(string), typeof(long));
 		treeview1.Model = listStore;
@@ -44,12 +41,11 @@ public partial class MainWindow: Gtk.Window
 		}
 
 
-
-
-
 		dbConnection.Close ();
 
 	}
+
+
 
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
 	{
@@ -59,12 +55,9 @@ public partial class MainWindow: Gtk.Window
 
 	protected void OnNewActionActivated (object sender, EventArgs e)
 	{
-
-
 		Nuevo insertar = new Nuevo ();
 
 		insertar.Show ();
-
 	}
 
 	protected void OnQuitActionActivated (object sender, EventArgs e)
@@ -78,22 +71,37 @@ public partial class MainWindow: Gtk.Window
 
 		eliminar.Show ();
 	}
-	protected void OnRefreshActionActivated (object sender, EventArgs e)
-	{
-		throw new NotImplementedException ();
-	}
-
 
 	protected void OnRefreshActionActivated (object sender, EventArgs e)
 	{
-		refreshAction.Activated += delegate {
+		IDbConnection dbConnection = new MySqlConnection ("Database=dbprueba; User Id=root; Password=sistemas");
+		IDataReader query;
+		
+		IDbCommand dbcommand = dbConnection.CreateCommand();
+
+		dbConnection.Open ();
+
+		//Para que lea y liste los datos de los campos
+		ListStore listStore = new ListStore (typeof(long), typeof(string), typeof(string), typeof(long));
+		treeview1.Model = listStore;
+
+		dbcommand.CommandText = "select * from articulo";
+
+		listStore.Clear ();
+
+		query = dbcommand.ExecuteReader ();
+
+		while (query.Read()) {
 
 
+			listStore.AppendValues (query ["id"], query ["nombre"], "" + query ["precio"], query ["categoria"]); //"" en precio es para que no de error si el precio es nulo
 
-		};
+		}
+
+		dbConnection.Close ();
+
+
 	}
-
-
 
 
 }
