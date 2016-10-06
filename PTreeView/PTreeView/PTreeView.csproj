@@ -5,10 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{FF34EBB2-962F-4989-98D1-2C925CD63EAE}</ProjectGuid>
+    <ProjectGuid>{E59BCF26-1935-43B3-B372-BEC0737EF1FD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>PArticulo</RootNamespace>
-    <AssemblyName>PArticulo</AssemblyName>
+    <RootNamespace>PTreeView</RootNamespace>
+    <AssemblyName>PTreeView</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -61,6 +61,9 @@
       <HintPath>..\..\..\..\..\usr\lib\cli\MySql.Data-6.4\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="Org.InstitutoSerpis.Ad">
+      <HintPath>..\..\Org.InstitutoSerpis.Ad\Org.InstitutoSerpis.Ad\bin\Debug\Org.InstitutoSerpis.Ad.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
@@ -73,12 +76,6 @@
     <Compile Include="gtk-gui\MainWindow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Nuevo.cs" />
-    <Compile Include="gtk-gui\PArticuloGTK.Nuevo.cs" />
-    <Compile Include="Eliminar.cs" />
-    <Compile Include="gtk-gui\PArticuloGTK.Eliminar.cs" />
-    <Compile Include="Editar.cs" />
-    <Compile Include="gtk-gui\PArticuloGTK.Editar.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

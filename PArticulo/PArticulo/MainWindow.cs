@@ -104,4 +104,11 @@ public partial class MainWindow: Gtk.Window
 	}
 
 
+	protected void OnEditActionActivated (object sender, EventArgs e)
+	{
+		Editar editar = new Editar ();
+		editar.Show ();
+
+	}
+
 }
