@@ -48,7 +48,7 @@ namespace Org.InstitutoSerpis.Ad
 			foreach (PropertyInfo propertyInfo in propertyInfos) {
 				string columnName = propertyInfo.Name;
 				treeView.AppendColumn (columnName, new CellRendererText (),
-				                       delegate(TreeViewColumn tree_column, CellRenderer cell, TreeModel tree_model, TreeIter iter) {
+				    delegate(TreeViewColumn tree_column, CellRenderer cell, TreeModel tree_model, TreeIter iter) {
 					object item = tree_model.GetValue (iter, 0);
 					object value = propertyInfo.GetValue (item, null);
 					CellRendererText cellRendererText = (CellRendererText)cell;
@@ -81,6 +81,7 @@ namespace Org.InstitutoSerpis.Ad
 	
 
 
-
+	}
+}
 
 
