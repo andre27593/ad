@@ -17,6 +17,30 @@ public partial class MainWindow: Gtk.Window
 
 		dbConnection.Open ();
 
+		fill ();
+
+		treeView.Selection.Changed += delegate(object sender, EventArgs e) {
+
+			bool selected = treeView.Selection.CountSelectedRows() > 0;
+			editAction.Sensitive = selected;
+			deleteAction.Sensitive = selected;
+			Console.WriteLine ("ha ocurrido el evento treeView.Selection.Changed selected={0}",selected);
+
+		};
+
+		newAction.Activated += delegate {
+			new ArticuloView();
+		};
+
+		refreshAction.Activated += delegate {
+			fill();
+		};
+
+
+	}
+
+	private void fill(){
+	
 		List <Articulo> list = new List<Articulo>();
 
 		//Se puede porque es tipo referencia, decimal no porque es un tipo valor
@@ -40,9 +64,12 @@ public partial class MainWindow: Gtk.Window
 
 		datareader.Close ();
 
+		editAction.Sensitive = false;
+		deleteAction.Sensitive = false;
+
+
 		TreeViewHelper.Fill (treeView, list);
-
-
+	
 	}
 
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
