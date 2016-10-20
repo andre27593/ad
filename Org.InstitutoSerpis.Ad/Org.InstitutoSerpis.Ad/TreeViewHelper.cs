@@ -40,7 +40,7 @@ namespace Org.InstitutoSerpis.Ad
 		}
 
 		private static void appendColumns(TreeView treeView, IList list){
-			if (treeView.Columns != 0)
+			if (treeView.Columns.Length != 0)
 				return;
 			Type listType = list.GetType ();
 			Type elementType = listType.GetGenericArguments () [0];
