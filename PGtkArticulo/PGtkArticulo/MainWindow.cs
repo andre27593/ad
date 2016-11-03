@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using Gtk;
 using PGtkArticulo;
 using System.Collections.Generic;
+using System.Collections;
 using Org.InstitutoSerpis.Ad;
 using System.Data;
 
@@ -29,6 +30,14 @@ public partial class MainWindow: Gtk.Window
 			new ArticuloView();
 		};
 
+		deleteAction.Activated += delegate {
+			MessageDialog messagedialog = new MessageDialog(this,DialogFlags.Modal,MessageType.Question,ButtonsType.YesNo,"¿Quieres eliminar el registro?");
+			ResponseType response = (ResponseType) messagedialog.Run();
+			messagedialog.Destroy();
+			if(response!=ResponseType.Yes){
+				return;
+			}
+		};
 
 		refreshAction.Activated += delegate {
 			fill();
@@ -38,24 +47,10 @@ public partial class MainWindow: Gtk.Window
 	}
 
 	private void fill() {
-		List<Articulo> list = new List<Articulo>();
-		string selectSql = "select * from articulo";
-		IDbCommand dbCommand = App.Instance.Dbconnection.CreateCommand ();
-		dbCommand.CommandText = selectSql;
-		IDataReader dataReader = dbCommand.ExecuteReader ();
-		while (dataReader.Read()) {
-			long id = (long)dataReader ["id"];
-			string nombre = (string)dataReader ["nombre"];
-			decimal? precio = dataReader ["precio"] is DBNull ? null : (decimal?)dataReader ["precio"];
-			long? categoria = dataReader["categoria"] is DBNull ? null : (long?)dataReader["categoria"];
-			Articulo articulo = new Articulo(id, nombre, precio, categoria);
-			list.Add (articulo);
-		}
-		dataReader.Close ();
 
 		editAction.Sensitive = false;
 		deleteAction.Sensitive = false;
-
+		IList list = ArticuloDao.GetList ();
 		TreeViewHelper.Fill (treeView, list);
 	}
 
@@ -65,4 +60,7 @@ public partial class MainWindow: Gtk.Window
 		Application.Quit ();
 		a.RetVal = true;
 	}
+
+
+
 }

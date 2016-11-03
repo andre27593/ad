@@ -4,6 +4,9 @@ namespace PGtkArticulo
 {
 	public class Articulo
 	{
+		public Articulo(){
+		}
+
 		public Articulo (long id, string nombre, decimal? precio, long? categoria)
 		{
 			Id = id;

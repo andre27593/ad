@@ -81,6 +81,9 @@
     <Compile Include="gtk-gui\PGtkArticulo.ArticuloView.cs" />
     <Compile Include="App.cs" />
     <Compile Include="DbCommandHelper.cs" />
+    <Compile Include="Categoria.cs" />
+    <Compile Include="ArticuloDao.cs" />
+    <Compile Include="CategoriaDao.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
