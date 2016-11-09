@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{AB52F882-F4AA-4FBF-A049-43BBEA433D8F}</ProjectGuid>
+    <ProjectGuid>{5DB42BFA-51A8-465B-A055-FAF780B981F2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Org.InstitutoSerpis.Ad</RootNamespace>
     <AssemblyName>Org.InstitutoSerpis.Ad</AssemblyName>
