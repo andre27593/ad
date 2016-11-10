@@ -11,7 +11,7 @@ namespace PGtkArticulo
 	{
 		public ArticuloView () : base(Gtk.WindowType.Toplevel){
 			this.Build ();
-			spinButtonPrecio.Value = 0; //stetic bug
+			spinButtonPrecio.Value = 0; 
 			saveAction.Sensitive = false;
 			saveAction.Activated += delegate {
 				Console.WriteLine ("saveAction.Activated");

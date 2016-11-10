@@ -7,6 +7,8 @@ using System.Collections;
 using Org.InstitutoSerpis.Ad;
 using System.Data;
 
+//La librería me da problemas
+
 public partial class MainWindow: Gtk.Window
 {	
 
@@ -14,8 +16,7 @@ public partial class MainWindow: Gtk.Window
 	{
 		Build ();
 		App.Instance.Dbconnection = new MySqlConnection (
-			"Database=dbprueba;User Id=root;Password=sistemas"
-			);
+			"Database=dbprueba;User Id=root;Password=sistemas");
 		App.Instance.Dbconnection.Open ();
 
 		fill ();
