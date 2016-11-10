@@ -29,11 +29,6 @@ namespace Org.InstitutoSerpis.Ad
 			AppendColumns (treeView, propertyNames.ToArray ());
 		}
 
-		/// <summary>
-		/// Appends the columns in the TreeView 
-		/// </summary>
-		/// <param name="treeView">Tree view.</param>
-		/// <param name="list">List.</param>
 		private static void appendColumns(TreeView treeView, IList list) {
 			if (treeView.Columns.Length != 0)
 				return;
