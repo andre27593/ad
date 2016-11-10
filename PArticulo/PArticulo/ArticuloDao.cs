@@ -2,11 +2,15 @@ using System;
 using Gtk;
 using System.Collections.Generic;
 using System.Data;
+using System.Reflection;
 
 using Org.InstitutoSerpis.Ad;
 
 namespace PArticulo
 {
+
+
+
 	public class ArticuloDao
 	{
 

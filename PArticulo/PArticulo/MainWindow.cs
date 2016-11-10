@@ -40,13 +40,13 @@ public partial class MainWindow: Gtk.Window
 			fill();
 		};
 
-		new ArticuloView ();
+
 	}
 
 	private void fill() {
 		editAction.Sensitive = false;
 		deleteAction.Sensitive = false;
-		IList list = ArticuloDao.GetList ();
+		IList list = EntityDao.GetList<Articulo> ();
 		TreeViewHelper.Fill (treeView, list);
 	}
 

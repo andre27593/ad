@@ -13,6 +13,7 @@ namespace Org.InstitutoSerpis.Ad
 				ButtonsType.YesNo,
 				message
 				);
+			messageDialog.Title = parent.Title;
 			ResponseType response = (ResponseType)messageDialog.Run();
 			messageDialog.Destroy();
 			return response == ResponseType.Yes;
