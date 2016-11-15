@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Data;
 
+
 using Org.InstitutoSerpis.Ad;
 using PArticulo;
 
@@ -56,4 +57,9 @@ public partial class MainWindow: Gtk.Window
 		Application.Quit ();
 		a.RetVal = true;
 	}
+	protected void OnEditActionActivated (object sender, EventArgs e)
+	{
+		new ArticuloView ();
+	}
+
 }

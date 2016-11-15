@@ -20,6 +20,7 @@
         <property name="Type">Action</property>
         <property name="Label" translatable="yes" />
         <property name="StockId">gtk-edit</property>
+        <signal name="Activated" handler="OnEditActionActivated" />
       </action>
       <action id="ArchivoAction">
         <property name="Type">Action</property>
@@ -95,6 +96,11 @@
         <property name="Label" translatable="yes" />
         <property name="StockId">gtk-save</property>
       </action>
+      <action id="editAction">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes" />
+        <property name="StockId">gtk-edit</property>
+      </action>
     </action-group>
     <property name="MemberName" />
     <property name="Title" translatable="yes">ArticuloView</property>
@@ -109,6 +115,7 @@
             <property name="ShowArrow">False</property>
             <node name="toolbar1" type="Toolbar">
               <node type="Toolitem" action="saveAction" />
+              <node type="Toolitem" action="editAction" />
             </node>
           </widget>
           <packing>

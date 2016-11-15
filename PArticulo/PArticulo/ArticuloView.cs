@@ -20,7 +20,11 @@ namespace PArticulo
 				articulo.Nombre = entryNombre.Text;
 				articulo.Precio = (decimal)spinButtonPrecio.Value;
 				articulo.Categoria = (long?)ComboBoxHelper.GetId(comboBoxCategoria);
+
 				ArticuloDao.Save(articulo);
+
+
+
 			};
 
 			entryNombre.Changed += delegate {
@@ -33,7 +37,7 @@ namespace PArticulo
 
 		private void fill() {
 			IList list = CategoriaDao.GetList ();
-			ComboBoxHelper.Fill(comboBoxCategoria, list, "Nombre");
+			ComboBoxHelper.Fill(comboBoxCategoria, list, "Nombre",2L);
 		}
 
 	}
