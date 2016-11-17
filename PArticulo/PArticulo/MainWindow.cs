@@ -18,6 +18,10 @@ public partial class MainWindow: Gtk.Window
 		);
 		App.Instance.DbConnection.Open ();
 
+//		IDbCommand dbCommand = App.Instance.DbConnection.CreateCommand ();
+//		dbCommand.CommandText = "update articulo set precio = 0 where precio is null";
+//		dbCommand.ExecuteNonQuery ();
+
 		fill ();
 
 		treeView.Selection.Changed += delegate {
@@ -27,7 +31,14 @@ public partial class MainWindow: Gtk.Window
 		};
 
 		newAction.Activated += delegate {
-			new ArticuloView();
+			Articulo articulo = new Articulo();
+			articulo.Precio = 0;
+			new ArticuloView(articulo);
+		};
+
+		editAction.Activated += delegate {
+			Articulo articulo = ArticuloDao.Load(TreeViewHelper.GetId(treeView));
+			new ArticuloView(articulo);
 		};
 
 		deleteAction.Activated += delegate {
@@ -57,9 +68,11 @@ public partial class MainWindow: Gtk.Window
 		Application.Quit ();
 		a.RetVal = true;
 	}
-	protected void OnEditActionActivated (object sender, EventArgs e)
-	{
-		new ArticuloView ();
-	}
+//	protected void OnEditActionActivated (object sender, EventArgs e)
+//	{
+//		Articulo articulo = new Articulo ();
+//		new ArticuloView (articulo);
+//	}
+
 
 }
