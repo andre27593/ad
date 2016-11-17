@@ -6,14 +6,14 @@ namespace PArticulo
 	{
 		public Articulo() {
 		}
-		public Articulo (object id, string nombre, decimal? precio, long? categoria) {
+		public Articulo (long id, string nombre, decimal? precio, long? categoria) {
 			Id = id;
 			Nombre = nombre;
 			Precio = precio;
 			Categoria = categoria;
 		}
 
-		public object Id { get; set; }
+		public long Id { get; set; }
 		public string Nombre { get; set; }
 		public decimal? Precio { get; set; }
 		public long? Categoria { get; set; }

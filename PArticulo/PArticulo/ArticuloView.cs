@@ -15,8 +15,7 @@ namespace PArticulo
 			entryNombre.Text = articulo.Nombre;
 			spinButtonPrecio.Value = (double)articulo.Precio;
 			fillComboBoxCategoria(articulo.Categoria);
-
-			saveAction.Sensitive = false;
+			refreshActions ();
 			saveAction.Activated += delegate {
 				Console.WriteLine ("saveAction.Activated");
 				articulo.Nombre = entryNombre.Text;
@@ -25,21 +24,22 @@ namespace PArticulo
 
 				ArticuloDao.Save(articulo);
 
-
-
 			};
 
 			entryNombre.Changed += delegate {
-				string content = entryNombre.Text.Trim();
-				saveAction.Sensitive = content != string.Empty;
+				refreshActions();
 			};
-
 
 		}
 
 		private void fillComboBoxCategoria(object categoria) {
 			IList list = CategoriaDao.GetList ();
 			ComboBoxHelper.Fill(comboBoxCategoria, list, "Nombre", categoria);
+		}
+
+		private void refreshActions(){
+			string content = entryNombre.Text.Trim();
+			saveAction.Sensitive = content != string.Empty;
 		}
 
 	}

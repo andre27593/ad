@@ -29,29 +29,24 @@ public partial class MainWindow: Gtk.Window
 			editAction.Sensitive = selected;
 			deleteAction.Sensitive = selected;
 		};
-
 		newAction.Activated += delegate {
 			Articulo articulo = new Articulo();
-			articulo.Precio = 0;
+			articulo.Nombre = String.Empty; //los entry esperan que no sea null
+			articulo.Precio = 0; //hasta que se permita null
 			new ArticuloView(articulo);
 		};
-
 		editAction.Activated += delegate {
 			Articulo articulo = ArticuloDao.Load(TreeViewHelper.GetId(treeView));
 			new ArticuloView(articulo);
 		};
-
 		deleteAction.Activated += delegate {
 			if (WindowHelper.Confirm(this,"Quieres eliminar el registro?"))
 				ArticuloDao.delete(TreeViewHelper.GetId(treeView));
 
 		};
-
-
 		refreshAction.Activated += delegate {
 			fill();
 		};
-
 
 	}
 
@@ -68,11 +63,6 @@ public partial class MainWindow: Gtk.Window
 		Application.Quit ();
 		a.RetVal = true;
 	}
-//	protected void OnEditActionActivated (object sender, EventArgs e)
-//	{
-//		Articulo articulo = new Articulo ();
-//		new ArticuloView (articulo);
-//	}
 
 
 }
