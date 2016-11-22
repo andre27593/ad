@@ -11,7 +11,7 @@ namespace PArticulo
 
 
 
-	public class ArticuloDao
+	public class ArticuloDao : IEntityDao<Articulo>
 	{
 
 		private const string SELECT_SQL = "select * from articulo";
@@ -33,7 +33,7 @@ namespace PArticulo
 		}
 
 		private const string SELECT_ID_SQL = "select * from articulo where id=@id";
-		public static Articulo Load(object id) {
+		public Articulo Load(object id) {
 			IDbCommand dbCommand = App.Instance.DbConnection.CreateCommand ();
 			dbCommand.CommandText = SELECT_ID_SQL;
 			DbCommandHelper.AddParameter (dbCommand, "id", id);

@@ -10,6 +10,7 @@ using PArticulo;
 
 public partial class MainWindow: Gtk.Window
 {	
+	private IEntityDao<Articulo> entityDao;
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
@@ -36,7 +37,7 @@ public partial class MainWindow: Gtk.Window
 			new ArticuloView(articulo);
 		};
 		editAction.Activated += delegate {
-			Articulo articulo = ArticuloDao.Load(TreeViewHelper.GetId(treeView));
+			Articulo articulo = entityDao.Load(TreeViewHelper.GetId(treeView));
 			new ArticuloView(articulo);
 		};
 		deleteAction.Activated += delegate {
@@ -48,6 +49,10 @@ public partial class MainWindow: Gtk.Window
 			fill();
 		};
 
+	}
+
+	public IEntityDao<Articulo> EntityDao{
+		set {entityDao = value;}
 	}
 
 	private void fill() {
