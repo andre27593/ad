@@ -2,6 +2,7 @@ package org.institutoserpis.ad;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,8 +13,12 @@ public class ArticuloDao {
 	//public static void main(String[] args){
 		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/dbprueba","root","sistemas");
 		
-		Statement statement = connection.createStatement();
-		ResultSet resultSet = statement.executeQuery("select * from articulo");
+		//Statement statement = connection.createStatement();
+		//ResultSet resultSet = statement.executeQuery("select * from articulo");
+		
+		PreparedStatement preparedStatement = connection.prepareStatement("select * from articulo where id > ?");
+		preparedStatement.setObject(1, Long.parseLong(args[0]));
+		ResultSet resultSet = preparedStatement.executeQuery();
 		
 		System.out.printf("%5s %-30s %10s %5s\n", "id", "nombre", "precio", "categoria");
 		while(resultSet.next()){
@@ -21,7 +26,8 @@ public class ArticuloDao {
 			
 		}
 		
-		statement.close();		
+		//statement.close();
+		preparedStatement.close();
 		connection.close();
 		System.out.println("fin");
 
