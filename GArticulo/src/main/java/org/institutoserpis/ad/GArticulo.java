@@ -47,6 +47,7 @@ public class GArticulo {
 			case 2:
 				System.out.println("Vas a modificar un articulo");
 				System.out.println();
+				listar();
 				modificar();
 				break;
 			
@@ -172,14 +173,11 @@ public class GArticulo {
 		
 		ResultSet resultSet = preparedStatement.executeQuery();
 		
+		System.out.printf("%5s %30s %10s %5s\n", "id", "nombre", "precio", "categoria");
 		while (resultSet.next()){
 			
-			System.out.println("Id: " +resultSet.getInt("id"));
-			System.out.println("Nombre: " +resultSet.getString("nombre"));
-			System.out.println("Precio: " +resultSet.getDouble("precio"));
-			System.out.println("Categoria: " +resultSet.getInt("categoria"));
+			System.out.printf("%5d %30s %10s %5d\n",resultSet.getInt("id"),resultSet.getString("nombre"),resultSet.getDouble("precio"),resultSet.getInt("categoria"));
 			System.out.println();
-			
 		}
 				
 		resultSet.close();
@@ -194,12 +192,10 @@ public class GArticulo {
 		
 		ResultSet resultSet = preparedStatement.executeQuery();
 		
+		System.out.printf("%5s %30s %10s %5s\n", "id", "nombre", "precio", "categoria");
 		while (resultSet.next()){
 			
-			System.out.println("Id: " +resultSet.getInt("id"));
-			System.out.println("Nombre: " +resultSet.getString("nombre"));
-			System.out.println("Precio: " +resultSet.getDouble("precio"));
-			System.out.println("Categoria: " +resultSet.getInt("categoria"));
+			System.out.printf("%5d %30s %10s %5d\n",resultSet.getInt("id"),resultSet.getString("nombre"),resultSet.getDouble("precio"),resultSet.getInt("categoria"));
 			System.out.println();
 			
 		}
