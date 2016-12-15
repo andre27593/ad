@@ -40,26 +40,31 @@ public class GArticulo {
 			switch (opc) {
 			case 1:
 				System.out.println("Vas a introducir un nuevo artículo");
+				System.out.println();
 				nuevo();
 				break;
 		
 			case 2:
 				System.out.println("Vas a modificar un articulo");
+				System.out.println();
 				modificar();
 				break;
 			
 			case 3:
 				System.out.println("Vas a eliminar un artículo");
+				System.out.println();
 				eliminar();
 				break;
 			
 			case 4:
 				System.out.println("Vas a consultar un artículo de tu base de datos");
+				System.out.println();
 				consultar();
 				break;
 			
 			case 5:
 				System.out.println("Vas a listar los artículos de tu base de datos");
+				System.out.println();
 				listar();
 				break;
 			
