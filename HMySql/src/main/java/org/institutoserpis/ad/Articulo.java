@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Articulo {
@@ -13,7 +15,7 @@ public class Articulo {
 	private long id;
 	private String nombre;
 	private BigDecimal precio;
-	private long categoria;
+	private Categoria categoria;
 	
 	
 	@Id
@@ -36,11 +38,17 @@ public class Articulo {
 	public void setPrecio(BigDecimal precio) {
 		this.precio = precio;
 	}
-	public long getCategoria() {
+	@ManyToOne
+	@JoinColumn(name="categoria")
+	public Categoria getCategoria() {
 		return categoria;
 	}
-	public void setCategoria(long categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+	@Override
+	public String toString() {
+		return String.format("%s %s %s (categoria=%s)" , id, nombre, precio, categoria);
 	}
 	
 	

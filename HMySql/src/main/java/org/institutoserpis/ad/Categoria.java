@@ -26,6 +26,9 @@ public class Categoria {
 		this.nombre = nombre;
 	}
 	
+	public String toString() {
+		return String.format("%s %s", id, nombre);
+	}
 	
 	
 }
