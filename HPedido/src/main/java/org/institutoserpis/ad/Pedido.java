@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Pedido {
 	
+	
 	private long id;
 	private Cliente cliente;
 	private Date fecha;
@@ -47,7 +48,10 @@ public class Pedido {
 		this.importe = importe;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Pedido [id=" + id + ", cliente=" + cliente + ", fecha=" + fecha + ", importe=" + importe + "]";
+	}
 	
 
 }

@@ -11,6 +11,9 @@ public class Cliente {
 	private long id;
 	private String nombre;
 	
+	public Cliente() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -25,6 +28,10 @@ public class Cliente {
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	@Override
+	public String toString() {
+		return "Cliente [id=" + id + ", nombre=" + nombre + "]";
 	}
 	
 	
