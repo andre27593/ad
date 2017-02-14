@@ -92,7 +92,7 @@ public class Hibernate {
 			
 			case 2:
 				int opcion=0;
-				System.out.println("Que quieres eliminar? ");
+				System.out.println("Que quieres modificar? ");
 				System.out.println();
 				System.out.println("7. Cliente");
 				System.out.println("8. Pedido");
@@ -101,17 +101,44 @@ public class Hibernate {
 				
 				if(opcion == 7){
 						
+					System.out.println("Vas a modificar un cliente");
+					System.out.println();
+					System.out.println("Lista de clientes");
+					listar_clientes();
+					System.out.println();
+					String idcliente;
+					String nombrenuevo;
+					System.out.println("Dime el id del cliente que quieres modificar ");
+					idcliente =scanner.next();
+					System.out.println("Dime el nombre nuevo del cliente ");
+					nombrenuevo = scanner.next();
+					modificar_cliente(idcliente,nombrenuevo);
 						
 				}
 				
 				else if(opcion == 8){
+					System.out.println("Vas a modificar un pedido");
+					System.out.println();
+					System.out.println("Lista de pedidos");
+					listar_pedidos();
+					System.out.println();
+					String idpedido;
+					String idcliente;
+					BigDecimal importe;
+					System.out.println("Dime el id del pedido que quieres modificar ");
+					idpedido =scanner.next();
+					System.out.println("Dime el id del cliente ");
+					idcliente = scanner.next();
+					System.out.println("Dime el importe del pedido que quieres modificar ");
+					importe =scanner.nextBigDecimal();
+					modificar_pedido(idcliente,idpedido,importe);					
 					
 						
 				}
 				
 				else if(opcion == 9){
 					
-						System.out.println("Has salido de la opción eliminar");
+						System.out.println("Has salido de la opción modificar");
 						break;
 				}
 				
@@ -296,7 +323,7 @@ public class Hibernate {
 		
 		List<Pedido> pedidos = entityManager.createQuery("from Pedido", Pedido.class).getResultList();
 		for(Pedido item : pedidos){
-			System.out.printf("%d %s %s %s %s\n", item.getId(), item.getCliente() , item.getFecha(), item.getImporte());
+			System.out.printf("%d %s %s %s\n", item.getId(), item.getCliente() , item.getFecha(), item.getImporte());
 		}
 		
 			
@@ -366,14 +393,35 @@ public class Hibernate {
 		
 	}
 	
-	public static void modificar_cliente(String idcliente){
+	public static void modificar_cliente(String idcliente, String nombrenuevo){
 		
+		entityManager = entityManagerFactory.createEntityManager();
+		entityManager.getTransaction().begin();
 		
+				
+		Cliente cliente = entityManager.getReference(Cliente.class, Long.parseLong(idcliente));
+		cliente.setNombre(nombrenuevo);
+		entityManager.flush();
+			
+		entityManager.getTransaction().commit();		
+		entityManager.close();
 		
 	}
 	
-	public static void modificar_pedido(String idpedido){
+	public static void modificar_pedido(String idcliente, String idpedido, BigDecimal importe){
 		
+		entityManager = entityManagerFactory.createEntityManager();
+		entityManager.getTransaction().begin();
+		
+		Cliente cliente = entityManager.getReference(Cliente.class, Long.parseLong(idcliente));
+				
+		Pedido pedido = entityManager.getReference(Pedido.class, Long.parseLong(idpedido));
+		pedido.setCliente(cliente);
+		pedido.setImporte(importe);
+		entityManager.flush();
+			
+		entityManager.getTransaction().commit();		
+		entityManager.close();
 		
 		
 	}
